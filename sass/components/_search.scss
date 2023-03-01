@@ -1,0 +1,40 @@
+.search {
+  display: flex;
+  justify-content: center;
+  min-width: 628px;
+  border-bottom: 2px solid $color-text;;
+}
+
+.search:focus-within {
+  width: 100%;
+  border-bottom-color: $color-brand;
+}
+
+.search__icon {
+  width: 34px;
+  margin-right: 20px;
+  margin-left: 8px;
+}
+
+.search__input {
+  padding: 0;
+  flex-grow: 1;
+  font-size: 24px;
+  font-weight: 300;
+  color: $color-text;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search__clear {
+  display: none;
+}
+
+.search__form {
+  display: flex;
+  align-items: center;
+  min-width: 502px;
+  height: 48px;
+  margin: 12px 0;
+}
