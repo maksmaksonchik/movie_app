@@ -21,7 +21,6 @@
   justify-content: flex-end;
   height: 100%;
   padding: 20px;
-
   border-radius: 12px;
 }
 
@@ -44,7 +43,7 @@
 
 //Замена постера
 .movie_no-poster, .movie_loading {
-  & .movie__poster {
+  .movie__poster {
     height: var(--grid-column-heigth);
     width: var(--grid-column-width);
     background: $color-movie-bg;
@@ -61,24 +60,22 @@
 
 .movie_no-poster {
   color: $color-movie-text;
-  & .movie__description {
+  .movie__description {
     z-index: 1;
   }
-  & .movie__extra {
+  .movie__extra {
     color: $color-movie-text;
   }
-  & .movie__rating {
+  .movie__rating {
     display: none;
   }
-
 }
 
 .movie_loading {
-  & .movie__name {
+  .movie__name {
     @include text-preloader(80%);
   }
-
-  & .movie__extra {
+  .movie__extra {
     @include text-preloader(50%);
     margin-bottom: 10px;
   }
