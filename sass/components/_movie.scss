@@ -1,0 +1,25 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: $color-movie-bg;
+  border-radius: 12px;
+}
+
+.movie__info {
+  display: flex;
+  justify-content: space-between;
+  color: $color-secondary-text;
+}
+
+.movie__name {
+  margin-bottom: 12px;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.movie__rating {
+  margin-bottom: 4px;
+  font-size: 2.4rem;
+}

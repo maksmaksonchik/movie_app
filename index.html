@@ -17,7 +17,8 @@
 
 <main class="main">
 
-    <div class="search">
+    <div class="search search_active">
+
         <div class="search__line">
             <form class="search__form" action="#">
                 <img class="search__icon" src="img/icons/search-icon.svg" alt="Search">
@@ -26,28 +27,50 @@
             </form>
         </div>
 
+        <div class="search__history">
+            <button class="search__item">Как я встретил маму</button>
+            <button class="search__item">Гоп-стоп</button>
+            <button class="search__item">Весенний дрозд</button>
 
-                <div class="search__history">
-                    <button class="search__item">Как я встретил маму</button>
-                    <button class="search__item">Гоп-стоп</button>
-                    <button class="search__item">Весенний дрозд</button>
-
-                    <!--More history-->
-                    <button class="search__item">Белоснежка и семь гномов</button>
-                    <button class="search__item">Трое в лодке</button>
-                    <button class="search__item">Бандитский петербург</button>
-                    <button class="search__item">Спящая женщина и принц</button>
-                    <button class="search__item">Война миров</button>
-                    <button class="search__item">Дикий дикий дикий запад</button>
-                </div>
-    </div>
-
-    <div class="no-results">
+            <!--More history-->
+            <button class="search__item">Белоснежка и семь гномов</button>
+            <button class="search__item">Трое в лодке</button>
+            <button class="search__item">Бандитский петербург</button>
+            <button class="search__item">Спящая женщина и принц</button>
+            <button class="search__item">Война миров</button>
+            <button class="search__item">Дикий дикий дикий запад</button>
+        </div>
 
     </div>
 
     <div class="results">
+<!--        <p class="results__message results__message_empty">Мы не поняли о чем речь ¯\_(ツ)_/¯</p>-->
+        <p class="results__message">Нашли 82 фильма</p>
 
+        <div class="results__grid">
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie">
+                <div class="movie__rating">4,1</div>
+                <div class="movie__name">Шпионский мост</div>
+                <div class="movie__info">
+                    <div class="movie__genres">Боевик, триллер</div>
+                    <div class="movie__year">2017</div>
+                </div>
+            </div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+            <div class="movie"></div>
+        </div>
     </div>
 
 </main>

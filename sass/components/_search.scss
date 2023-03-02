@@ -35,6 +35,22 @@
   }
 }
 
+.search_active {
+  width: 100%;
+  & .search__line {
+    border-bottom-color: $color-brand;
+  }
+  & .search__clear {
+    display: block;
+  }
+  & .search__form {
+    padding: 0;
+  }
+  & .search__history {
+    display: flex;
+  }
+}
+
 .search__icon {
   width: 34px;
   margin-right: 20px;

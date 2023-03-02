@@ -1,0 +1,22 @@
+@import "movie";
+
+.results {
+  margin-top: 100px;
+}
+.results__message {
+  font-size: 3.6rem;
+  font-weight: 900;
+  margin: 36px 0;
+}
+
+:root {
+  --grid-column-width: min(calc((100vw - 232px) / 4), 302px);
+  --grid-column-heigth: calc(454 * var(--grid-column-width) / 302);
+}
+
+.results__grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--grid-column-width));
+  grid-auto-rows: var(--grid-column-heigth);
+  gap: 24px;
+}
