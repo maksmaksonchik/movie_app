@@ -22,3 +22,8 @@ body {
 .empty-box {
   flex-grow: 1;
 }
+
+a {
+  color: $color-text;
+  text-decoration: none;
+}
