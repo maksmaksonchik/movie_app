@@ -19,6 +19,12 @@ body {
   background-color: $color-bg;
 }
 
+.main {
+  max-width: 1440px;
+  width: 100%;;
+  padding: 0 80px;
+}
+
 .empty-box {
   flex-grow: 1;
 }

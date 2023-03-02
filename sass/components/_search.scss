@@ -3,8 +3,6 @@
   width: 628px;
 }
 
-//Search line
-
 .search__line {
   border-bottom: 2px solid $color-text;;
   margin-bottom: 24px;
@@ -20,22 +18,6 @@
 }
 
 .search:focus-within {
-  width: 100%;
-  & .search__line {
-    border-bottom-color: $color-brand;
-  }
-  & .search__clear {
-    display: block;
-  }
-  & .search__form {
-    padding: 0;
-  }
-  & .search__history {
-    display: flex;
-  }
-}
-
-.search_active {
   width: 100%;
   & .search__line {
     border-bottom-color: $color-brand;
@@ -85,8 +67,6 @@
   }
 }
 
-// History
-
 .search__history {
   display: none;
   flex-wrap: wrap;
@@ -103,5 +83,25 @@
   cursor: pointer;
   &:hover {
     background: $color-tag-active;
+  }
+}
+
+//Search active
+
+.search_active {
+  .search {
+    width: 100%;
+  }
+  .search__line {
+    border-bottom-color: $color-brand;
+  }
+  .search__clear {
+    display: block;
+  }
+  .search__form {
+    padding: 0;
+  }
+  .search__history {
+    display: flex;
   }
 }
