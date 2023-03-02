@@ -4,7 +4,7 @@
 }
 
 .search__line {
-  border-bottom: 2px solid $color-text;;
+  border-bottom: 2px solid $color-text;
   margin-bottom: 24px;
 }
 
@@ -17,21 +17,23 @@
   margin: 12px 0;
 }
 
-.search:focus-within {
-  width: 100%;
-  & .search__line {
-    border-bottom-color: $color-brand;
-  }
-  & .search__clear {
-    display: block;
-  }
-  & .search__form {
-    padding: 0;
-  }
-  & .search__history {
-    display: flex;
-  }
-}
+//Закомментировал, потому то оно ломает scroll режим ( в остальных работает :) )
+
+//.search:focus-within {
+//  width: 100%;
+//  & .search__line {
+//    border-bottom-color: $color-brand;
+//  }
+//  & .search__clear {
+//    display: block;
+//  }
+//  & .search__form {
+//    padding: 0;
+//  }
+//  & .search__history {
+//    display: flex;
+//  }
+//}
 
 .search__icon {
   width: 34px;
@@ -103,5 +105,33 @@
   }
   .search__history {
     display: flex;
+  }
+}
+
+//scroll
+
+.scroll {
+  .search__history {
+    display: none;
+  }
+
+  .search__line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid $color-text;
+    background: rgba(28, 28, 28, 0.8);
+    backdrop-filter: blur(2px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 2px;
+  }
+
+  .search__form {
+    max-width: 1440px;
+    width: 100%;;
+    padding: 0 80px;
+    margin: 12px auto;
   }
 }
