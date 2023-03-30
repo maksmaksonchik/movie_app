@@ -1,82 +1,82 @@
-@mixin text-preloader($width) {
-  height: 24px;
-  width: $width;
-  background: $color-text-preloader;
-  border-radius: 2px;
-}
+// @mixin text-preloader($width) {
+//   height: 24px;
+//   width: $width;
+//   background: $color-text-preloader;
+//   border-radius: 2px;
+// }
 
-.movie__poster {
-  display: block;
-  width: 100%;
-  border-radius: 12px;
-}
+// .movie__poster {
+//   display: block;
+//   width: 100%;
+//   border-radius: 12px;
+// }
 
-.movie__description {
-  position: relative;
-  bottom: 100%;
-  z-index: -1;
-  height: 100%;
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  border-radius: 12px;
-}
+// .movie__description {
+//   position: relative;
+//   bottom: 100%;
+//   z-index: -1;
+//   height: 100%;
+//   margin: 0;
+//   padding: 20px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   border-radius: 12px;
+// }
 
-.movie__rating {
-  margin-bottom: 4px;
-  font-size: 2.4rem;
-}
+// .movie__rating {
+//   margin-bottom: 4px;
+//   font-size: 2.4rem;
+// }
 
-.movie__name {
-  margin-bottom: 12px;
-  font-size: 2.4rem;
-  font-weight: 700;
-}
+// .movie__name {
+//   margin-bottom: 12px;
+//   font-size: 2.4rem;
+//   font-weight: 700;
+// }
 
-.movie__extra {
-  display: flex;
-  justify-content: space-between;
-  color: $color-secondary-text;
-}
+// .movie__extra {
+//   display: flex;
+//   justify-content: space-between;
+//   color: $color-secondary-text;
+// }
 
-//Замена постера
-.movie_no-poster, .movie_loading {
-  .movie__poster {
-    height: var(--grid-column-heigth);
-    width: var(--grid-column-width);
-    background: $color-movie-bg;
-  }
-}
+// .movie_with-poster {
+//   &:hover .movie__description{
+//     z-index: 100;
+//     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 26.43%, rgba(0, 0, 0, 0.8) 72.41%);
+//     backdrop-filter: blur(1px);
+//   }
+// }
 
-.movie_with-poster {
-  &:hover .movie__description{
-    z-index: 100;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 26.43%, rgba(0, 0, 0, 0.8) 72.41%);
-    backdrop-filter: blur(1px);
-  }
-}
+// //Замена постера
+// .movie_no-poster, .movie_loading {
+//   .movie__poster {
+//     height: var(--grid-column-heigth);
+//     width: var(--grid-column-width);
+//     background: $color-movie-bg;
+//   }
+// }
 
-.movie_no-poster {
-  color: $color-movie-text;
-  .movie__description {
-    z-index: 1;
-  }
-  .movie__extra {
-    color: $color-movie-text;
-  }
-  .movie__rating {
-    display: none;
-  }
-}
+// .movie_no-poster {
+//   color: $color-movie-text;
+//   .movie__description {
+//     z-index: 1;
+//   }
+//   .movie__extra {
+//     color: $color-movie-text;
+//   }
+//   .movie__rating {
+//     display: none;
+//   }
+// }
 
-.movie_loading {
-  .movie__name {
-    @include text-preloader(80%);
-  }
-  .movie__extra {
-    @include text-preloader(50%);
-    margin-bottom: 10px;
-  }
-}
+// .movie_loading {
+//   .movie__name {
+//     @include text-preloader(80%);
+//   }
+//   .movie__extra {
+//     @include text-preloader(50%);
+//     margin-bottom: 10px;
+//   }
+// }
