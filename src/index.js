@@ -1,3 +1,6 @@
+// Components
+import './components/currentYear.js';
+
 const search = document.querySelector('.main');
 
 const activateSearch = () => {
