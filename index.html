@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,245 +9,247 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="sass/style.css">
+    <link rel="stylesheet" href="src/style.css">
     <title>Тинькофф Прокат</title>
 </head>
+
 <body>
-<header class="header">
-    <img class="header__logo" src="img/logo/tp-logo.svg" alt="Лого Тинькофф Прокат">
-</header>
+    <header class="header">
+        <img class="header__logo" src="src/img/logo/tp-logo.svg" alt="Лого Тинькофф Прокат">
+    </header>
 
-<main class="main">
+    <main class="main" id="main">
 
-    <div class="search">
+        <div class="search">
 
-        <div class="search__line">
-            <form class="search__form" action="#">
-                <label for="search__input">
-                    <img class="search__icon" src="img/icons/search-icon.svg" alt="Search">
-                </label>
-                <input class="search__input" id="search__input" type="text"
-                       placeholder="Поиск фильмов по жанрам и актерам">
-                <button class="search__clear"></button>
-            </form>
+            <div class="search__line">
+                <form class="search__form" action="#">
+                    <label for="search__input">
+                        <img class="search__icon" src="src/img/icons/search-icon.svg" alt="Search">
+                    </label>
+                    <input class="search__input" id="search__input" type="text"
+                        placeholder="Поиск фильмов по жанрам и актерам">
+                    <button class="search__clear"></button>
+                </form>
+            </div>
+
+            <div class="search__history">
+                <button class="search__item">Как я встретил маму</button>
+                <button class="search__item">Гоп-стоп</button>
+                <button class="search__item">Весенний дрозд</button>
+
+                <!--More history-->
+                <button class="search__item">Белоснежка и семь гномов</button>
+                <button class="search__item">Трое в лодке</button>
+                <button class="search__item">Бандитский петербург</button>
+                <button class="search__item">Спящая женщина и принц</button>
+                <button class="search__item">Война миров</button>
+                <button class="search__item">Дикий дикий дикий запад</button>
+            </div>
+
         </div>
 
-        <div class="search__history">
-            <button class="search__item">Как я встретил маму</button>
-            <button class="search__item">Гоп-стоп</button>
-            <button class="search__item">Весенний дрозд</button>
+        <div class="results">
+            <p class="results__message results__message_counter">Нашли 82 фильма</p>
+            <p class="results__message results__message_not-found">Мы не поняли о чем речь ¯\_(ツ)_/¯</p>
 
-            <!--More history-->
-            <button class="search__item">Белоснежка и семь гномов</button>
-            <button class="search__item">Трое в лодке</button>
-            <button class="search__item">Бандитский петербург</button>
-            <button class="search__item">Спящая женщина и принц</button>
-            <button class="search__item">Война миров</button>
-            <button class="search__item">Дикий дикий дикий запад</button>
+            <div class="results__grid">
+
+                <!--Плитки-->
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Forrest-Gump.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r05.png" alt="Отлично"> <span>4,45</span>
+                        </div>
+                        <div class="movie__name">Форрест Гамп</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Драма, комедия</div>
+                            <div class="movie__year">1984</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Saving-Private-Ryan.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>4,1</span>
+                        </div>
+                        <div class="movie__name">Спасти рядового Райана</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Военный, боевик</div>
+                            <div class="movie__year">1998</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Apollo-13.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,85</span>
+                        </div>
+                        <div class="movie__name">Аполлон 13</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Драма, приключения</div>
+                            <div class="movie__year">1995</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Inferno.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,2</span>
+                        </div>
+                        <div class="movie__name">Инферно</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Боевик, триллер</div>
+                            <div class="movie__year">2016</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_no-poster" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,8</span>
+                        </div>
+                        <div class="movie__name">Шпионский мост</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Боевик, триллер</div>
+                            <div class="movie__year">2017</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Sully.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,7</span>
+                        </div>
+                        <div class="movie__name">Чудо на Гудзоне</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Драма, биография</div>
+                            <div class="movie__year">2016</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+
+                <a class="movie movie_with-poster" href="#">
+                    <img class="movie__poster" src="src/img/content/posters/Terminal.png" alt="Постер фильма">
+                    <div class="movie__description">
+                        <div class="movie__rating">
+                            <img src="src/img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>4,1</span>
+                        </div>
+                        <div class="movie__name">Терминал</div>
+                        <div class="movie__extra">
+                            <div class="movie__genres">Драма, мелодрама</div>
+                            <div class="movie__year">2004</div>
+                        </div>
+                    </div>
+                </a>
+                <!--Пустые плитки-->
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <a class="movie movie_loading" href="#">
+                    <div class="movie__poster"></div>
+                    <div class="movie__description">
+                        <div class="movie__name"></div>
+                        <div class="movie__extra"></div>
+                    </div>
+                </a>
+                <!--/Плитки-->
+            </div>
         </div>
 
-    </div>
+    </main>
 
-    <div class="results">
-        <p class="results__message results__message_counter">Нашли 82 фильма</p>
-        <p class="results__message results__message_not-found">Мы не поняли о чем речь ¯\_(ツ)_/¯</p>
+    <div class="empty-box"></div>
 
-        <div class="results__grid">
-
-            <!--Плитки-->
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Forrest-Gump.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r05.png" alt="Отлично"> <span>4,45</span>
-                    </div>
-                    <div class="movie__name">Форрест Гамп</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Драма, комедия</div>
-                        <div class="movie__year">1984</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Saving-Private-Ryan.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>4,1</span>
-                    </div>
-                    <div class="movie__name">Спасти рядового Райана</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Военный, боевик</div>
-                        <div class="movie__year">1998</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Apollo-13.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,85</span>
-                    </div>
-                    <div class="movie__name">Аполлон 13</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Драма, приключения</div>
-                        <div class="movie__year">1995</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Inferno.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,2</span>
-                    </div>
-                    <div class="movie__name">Инферно</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Боевик, триллер</div>
-                        <div class="movie__year">2016</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_no-poster" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,8</span>
-                    </div>
-                    <div class="movie__name">Шпионский мост</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Боевик, триллер</div>
-                        <div class="movie__year">2017</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Sully.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>3,7</span>
-                    </div>
-                    <div class="movie__name">Чудо на Гудзоне</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Драма, биография</div>
-                        <div class="movie__year">2016</div>
-                    </div>
-                </div>
-            </a>
-
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-
-            <a class="movie movie_with-poster" href="#">
-                <img class="movie__poster" src="img/content/posters/Terminal.png" alt="Постер фильма">
-                <div class="movie__description">
-                    <div class="movie__rating">
-                        <img src="img/icons/movie-ratings/r04.png" alt="Хорошо"> <span>4,1</span>
-                    </div>
-                    <div class="movie__name">Терминал</div>
-                    <div class="movie__extra">
-                        <div class="movie__genres">Драма, мелодрама</div>
-                        <div class="movie__year">2004</div>
-                    </div>
-                </div>
-            </a>
-            <!--Пустые плитки-->
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <a class="movie movie_loading" href="#">
-                <div class="movie__poster"></div>
-                <div class="movie__description">
-                    <div class="movie__name"></div>
-                    <div class="movie__extra"></div>
-                </div>
-            </a>
-            <!--/Плитки-->
-        </div>
-    </div>
-
-</main>
-
-<div class="empty-box"></div>
-
-<footer class="footer">
-    <p class="footer__copyrights">© 2019 Тинькофф Прокат</p>
-</footer>
+    <footer class="footer">
+        <p class="footer__copyrights">© 2019 Тинькофф Прокат</p>
+    </footer>
 </body>
+
 </html>

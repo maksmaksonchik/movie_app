@@ -60,11 +60,11 @@
   margin: 0 10px;
   padding: 0;
   border: none;
-  background: center/contain url("../../img/icons/clear-icon.svg");
+  background: center/contain url("./img/icons/clear-icon.svg");
   cursor: pointer;
 
   &:hover {
-    background: center/contain url("../../img/icons/clear-icon-active.svg");
+    background: center/contain url("./img/icons/clear-icon-active.svg");
   }
 }
 

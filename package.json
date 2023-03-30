@@ -10,20 +10,23 @@
     "lint:fix": "npm run lint:es:fix",
     "lint:es": "eslint **/*.js",
     "lint:es:fix": "eslint --fix **/*.js",
+    "sass": "sass src/sass:src",
+    "sass:watch": "sass --watch src/sass:src",
     "start": "live-server --port=8001 --open=/index.html"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
   "devDependencies": {
     "eslint": "^8.37.0",
     "eslint-config-airbnb": "^19.0.4",
     "husky": "^8.0.3",
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "sass": "^1.60.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
