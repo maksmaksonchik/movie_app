@@ -234,28 +234,16 @@ a {
 }
 
 .results__message {
-  display: none;
   margin: 36px 0;
   font-size: 3.6rem;
   font-weight: 900;
 }
 
 .results__grid {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(4, var(--grid-column-width));
   grid-auto-rows: var(--grid-column-heigth);
   gap: 24px;
-}
-
-.search_not_found .results__message_not-found {
-  display: block;
-}
-
-.search_live .results__grid {
-  display: grid;
-}
-.search_live .results__message_counter {
-  display: block;
 }
 
 .footer__copyrights {
