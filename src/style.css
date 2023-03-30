@@ -79,19 +79,14 @@ a {
   color: #FFFFFF;
 }
 
-.search__clear {
-  display: none;
-  box-sizing: content-box;
-  width: 27px;
-  height: 27px;
-  margin: 0 10px;
-  padding: 0;
-  border: none;
-  background: center/contain url("./img/icons/clear-icon.svg");
+.search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  content: url("./img/icons/clear-icon.svg");
   cursor: pointer;
 }
-.search__clear:hover {
-  background: center/contain url("./img/icons/clear-icon-active.svg");
+
+.search__input::-webkit-search-cancel-button:hover {
+  content: url("./img/icons/clear-icon-active.svg");
 }
 
 .search__history {
