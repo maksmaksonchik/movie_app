@@ -1,5 +1,3 @@
-@import "movie";
-
 :root {
   --grid-column-width: min(calc((100vw - 232px) / 4), 302px);
   --grid-column-heigth: calc(454 * var(--grid-column-width) / 302);

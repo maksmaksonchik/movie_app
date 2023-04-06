@@ -60,7 +60,7 @@ movieTemplate.innerHTML = `
   }
   
   .movie__title {
-    font-size: 1.5rem;
+    font-size: 2.4rem;
     color: #fff;
     margin: 4px 0 0;
   }
@@ -75,7 +75,7 @@ movieTemplate.innerHTML = `
 
   <article class="movie">
     <a href="" class="movie__link">
-      <img class="movie__image" src="" alt="poster" />
+    <img class="movie__image" src="" alt="poster" />
       <div class="movie__description">
         <div class="movie__rating"></div>
         <h3 class="movie__title"></h3>

@@ -69,7 +69,7 @@ const search = async (currentState, searchTerm) => {
 
 // Рендер карточки
 
-const render = (movieData) => {
+const renderMovie = (movieData) => {
   const movie = document.createElement('movie-card');
 
   movie.poster = movieData.poster;
@@ -104,7 +104,7 @@ const renderHistory = (searches) => {
 const renderList = (results) => {
   const list = document.createDocumentFragment();
 
-  results.forEach((movieData) => list.appendChild(render(movieData)));
+  results.forEach((movieData) => list.appendChild(renderMovie(movieData)));
 
   resultsContainer.innerHTML = '';
   resultsContainer.appendChild(list);
@@ -154,12 +154,21 @@ const onTagClick = async (event) => {
   }
 };
 
+const onTagRemove = (event) => {
+  if (event.target.classList.contains('search__tag') && !event.altKey) {
+    const removeTerm = event.target.dataset.movie;
+    const searches = state.searches.filter((term) => term !== removeTerm);
+    setState({ searches });
+    updateView(getState());
+  }
+};
+
 // Активация строки поиска
 
 const activateSearch = () => {
   searchForm.classList.add('search_active');
   renderHistory(state.searches);
-  searchForm.removeEventListener('click');
+  searchForm.removeEventListener('click', activateSearch);
 };
 
 // Подписки на события
@@ -172,10 +181,15 @@ const subscribeToTagClick = () => {
   searchHistory.addEventListener('click', onTagClick);
 };
 
+const subscribeToTagRemove = () => {
+  searchHistory.addEventListener('dblclick', onTagRemove);
+};
+
 const subscribeToSearchClick = () => {
   searchForm.addEventListener('click', activateSearch);
 };
 
 subscribeToSubmit();
 subscribeToTagClick();
+subscribeToTagRemove();
 subscribeToSearchClick();
