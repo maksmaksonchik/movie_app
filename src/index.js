@@ -12,15 +12,7 @@ const resultsMessage = document.querySelector('.results__message');
 
 const form = document.querySelector('.search__form');
 const input = document.querySelector('.search__input');
-
-// Активация строки поиска
-
-const main = document.querySelector('.main');
-const activateSearch = () => {
-  main.classList.add('search_active');
-};
-
-activateSearch();
+const searchHistory = document.querySelector('.search__history');
 
 // Склонения
 
@@ -65,13 +57,13 @@ const search = async (currentState, searchTerm) => {
     const results = await response.json();
 
     return results.Response === 'True'
-      ? {
+      ? setState({
         count: results.totalResults,
         results: results.Search.map(mapMovie),
-      }
-      : { error: results.Error };
+      })
+      : setState({ error: results.Error });
   } catch (error) {
-    return { error };
+    return setState({ error });
   }
 };
 
@@ -86,6 +78,25 @@ const render = (movieData) => {
   movie.link = movieData.link;
 
   return movie;
+};
+
+// Рендер истории
+
+const renderHistory = (searches) => {
+  const list = document.createDocumentFragment();
+
+  searches.forEach((searchTerm) => {
+    const tag = document.createElement('button');
+
+    tag.classList.add('search__tag');
+    tag.textContent = searchTerm;
+    tag.dataset.movie = searchTerm;
+
+    list.appendChild(tag);
+  });
+
+  searchHistory.innerHTML = '';
+  searchHistory.appendChild(list);
 };
 
 // Рендер результатов
@@ -111,21 +122,57 @@ const renderError = () => {
   resultsMessage.textContent = 'Мы не поняли о чем речь ¯\\_(ツ)_/¯';
 };
 
-// Обработка сабмита
+// Update
+
+const updateView = (nextState) => {
+  if (nextState.error) {
+    renderError();
+  } else {
+    renderCount(nextState.count);
+  }
+  renderHistory(nextState.searches);
+  renderList(nextState.results);
+};
+
+// Обработчики событий
+
+const onSearchSubmit = async (event) => {
+  event.preventDefault();
+  input.blur();
+  const nextState = await search(getState(), input.value);
+
+  updateView(nextState);
+};
+
+const onTagClick = async (event) => {
+  event.preventDefault();
+
+  if (event.target.classList.contains('search__tag') && !event.altKey) {
+    input.value = event.target.dataset.movie;
+    const nextState = await search(getState(), event.target.dataset.movie);
+    updateView(nextState);
+  }
+};
+
+// Подписки на события
 
 const subscribeToSubmit = () => {
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const data = await search(getState(), input.value);
+  form.addEventListener('submit', onSearchSubmit);
+};
 
-    if (data.error) {
-      renderError();
-      renderList([]);
-    } else {
-      renderCount(data.count);
-      renderList(data.results);
-    }
-  });
+const subscribeToTagClick = () => {
+  searchHistory.addEventListener('click', onTagClick);
 };
 
 subscribeToSubmit();
+subscribeToTagClick();
+
+// Активация строки поиска
+
+const main = document.querySelector('.search');
+const activateSearch = () => {
+  main.classList.add('search_active');
+  renderHistory(state.searches);
+};
+
+activateSearch();

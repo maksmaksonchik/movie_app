@@ -94,7 +94,7 @@ a {
   flex-wrap: wrap;
 }
 
-.search__item {
+.search__tag {
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 6px 16px;
@@ -104,18 +104,15 @@ a {
   color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
-.search__item:hover {
+.search__tag:hover {
   background: #FFFFFF;
 }
 
-.search_active .search {
+.search_active {
   width: 100%;
 }
 .search_active .search__line {
   border-bottom-color: #FDCE25;
-}
-.search_active .search__clear {
-  display: block;
 }
 .search_active .search__form {
   padding: 0;

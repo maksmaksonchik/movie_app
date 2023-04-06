@@ -83,7 +83,7 @@
   flex-wrap: wrap;
 }
 
-.search__item {
+.search__tag {
   margin-right: 8px;
   margin-bottom: 8px;
   padding: 6px 16px;
@@ -100,14 +100,9 @@
 //Search active
 
 .search_active {
-  .search {
     width: 100%;
-  }
   .search__line {
     border-bottom-color: $color-brand;
-  }
-  .search__clear {
-    display: block;
   }
   .search__form {
     padding: 0;
