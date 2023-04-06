@@ -7,12 +7,13 @@ import './components/currentYear.js';
 import './components/movieCard.js';
 
 // Nodes
+const searchLine = document.querySelector('.search');
+const searchForm = document.querySelector('.search__form');
+const searchInput = document.querySelector('.search__input');
+const searchHistory = document.querySelector('.search__history');
+
 const resultsContainer = document.querySelector('.results__grid');
 const resultsMessage = document.querySelector('.results__message');
-
-const form = document.querySelector('.search__form');
-const input = document.querySelector('.search__input');
-const searchHistory = document.querySelector('.search__history');
 
 // Склонения
 
@@ -138,8 +139,8 @@ const updateView = (nextState) => {
 
 const onSearchSubmit = async (event) => {
   event.preventDefault();
-  input.blur();
-  const nextState = await search(getState(), input.value);
+  searchInput.blur();
+  const nextState = await search(getState(), searchInput.value);
 
   updateView(nextState);
 };
@@ -148,31 +149,34 @@ const onTagClick = async (event) => {
   event.preventDefault();
 
   if (event.target.classList.contains('search__tag') && !event.altKey) {
-    input.value = event.target.dataset.movie;
+    searchInput.value = event.target.dataset.movie;
     const nextState = await search(getState(), event.target.dataset.movie);
     updateView(nextState);
   }
 };
 
+// Активация строки поиска
+
+const activateSearch = () => {
+  searchLine.classList.add('search_active');
+  renderHistory(state.searches);
+  searchLine.removeEventListener('click');
+};
+
 // Подписки на события
 
 const subscribeToSubmit = () => {
-  form.addEventListener('submit', onSearchSubmit);
+  searchForm.addEventListener('submit', onSearchSubmit);
 };
 
 const subscribeToTagClick = () => {
   searchHistory.addEventListener('click', onTagClick);
 };
 
-subscribeToSubmit();
-subscribeToTagClick();
-
-// Активация строки поиска
-
-const main = document.querySelector('.search');
-const activateSearch = () => {
-  main.classList.add('search_active');
-  renderHistory(state.searches);
+const subscribeToSearchClick = () => {
+  searchLine.addEventListener('click', activateSearch);
 };
 
-activateSearch();
+subscribeToSubmit();
+subscribeToTagClick();
+subscribeToSearchClick();
