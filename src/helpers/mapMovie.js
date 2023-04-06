@@ -1,4 +1,4 @@
-export const mapMovie = (movie) => ({
+export default (movie) => ({
   title: movie.Title,
   year: movie.Year,
   link: `https://www.imdb.com/title/${movie.imdbID}/`,
