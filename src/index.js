@@ -7,7 +7,6 @@ import './components/currentYear.js';
 import './components/movieCard.js';
 
 // Nodes
-const searchLine = document.querySelector('.search');
 const searchForm = document.querySelector('.search__form');
 const searchInput = document.querySelector('.search__input');
 const searchHistory = document.querySelector('.search__history');
@@ -158,9 +157,9 @@ const onTagClick = async (event) => {
 // Активация строки поиска
 
 const activateSearch = () => {
-  searchLine.classList.add('search_active');
+  searchForm.classList.add('search_active');
   renderHistory(state.searches);
-  searchLine.removeEventListener('click');
+  searchForm.removeEventListener('click');
 };
 
 // Подписки на события
@@ -174,7 +173,7 @@ const subscribeToTagClick = () => {
 };
 
 const subscribeToSearchClick = () => {
-  searchLine.addEventListener('click', activateSearch);
+  searchForm.addEventListener('click', activateSearch);
 };
 
 subscribeToSubmit();

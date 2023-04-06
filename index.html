@@ -19,25 +19,17 @@
         <img class="header__logo" src="src/img/logo/tp-logo.svg" alt="Лого Тинькофф Прокат">
     </header>
 
-    <main class="main" id="main">
+    <main class="search" id="main">
 
-        <div class="search">
-
+        <form class="search__form">
             <div class="search__line">
-                <form class="search__form" action="#">
-                    <label for="search__input">
-                        <img class="search__icon" src="src/img/icons/search-icon.svg" alt="Search">
-                    </label>
-                    <input class="search__input" type="search" name="search"
-                        placeholder="Поиск фильмов по жанрам и актерам" autocomplete="off">
-                </form>
+                <input class="search__input" type="search" name="search" placeholder="Поиск фильмов по жанрам и актерам"
+                    autocomplete="off">
             </div>
-
             <div class="search__history"></div>
+        </form>
 
-        </div>
-
-        <div class="results">
+        <div class="search__results results">
             <p class="results__message"></p>
             <div class="results__grid"></div>
         </div>
