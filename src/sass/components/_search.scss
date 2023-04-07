@@ -54,9 +54,11 @@
   border-radius: 4px;
   background: $color-tag;
   color: $color-tag-text;
+  user-select: none;
   cursor: pointer;
   &:hover {
     background: $color-tag-active;
+    user-select: none;
   }
 }
 

@@ -93,30 +93,51 @@ export default class View {
     this.renderSearch(nextState);
   }
 
-  async onTagClick(event) {
-    event.preventDefault();
+  subscribeToTagClickAndRemove() {
+    const isTargetTag = (event) => event.target.classList.contains('search__tag') && !event.altKey;
 
-    if (event.target.classList.contains('search__tag') && !event.altKey) {
+    const onTagClick = async (event) => {
       this.searchInput.value = event.target.dataset.movie;
 
       const nextState = await this.controller.handleTagClick(event.target.dataset.movie);
 
       this.renderSearch(nextState);
-    }
-  }
+    };
 
-  onTagRemove(event) {
-    if (event.target.classList.contains('search__tag') && !event.altKey) {
+    const onTagRemove = (event) => {
       this.controller.handleTagRemove(event.target.dataset.movie);
       this.renderHistory(this.controller.getHistory());
-    }
+    };
+
+    const delay = 200;
+    let timer;
+    let prevent = false;
+
+    this.searchHistory.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (!isTargetTag(event)) { return; }
+      timer = setTimeout(async () => {
+        if (!prevent) {
+          onTagClick(event);
+        } else {
+          prevent = false;
+        }
+      }, delay);
+    });
+
+    this.searchHistory.addEventListener('dblclick', (event) => {
+      event.preventDefault();
+      if (!isTargetTag(event)) { return; }
+      clearTimeout(timer);
+      prevent = true;
+      onTagRemove(event);
+    });
   }
 
   // Init
   init() {
     this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
     this.searchForm.addEventListener('submit', this.onSearchSubmit.bind(this));
-    this.searchHistory.addEventListener('click', this.onTagClick.bind(this));
-    this.searchHistory.addEventListener('dblclick', this.onTagRemove.bind(this));
+    this.subscribeToTagClickAndRemove();
   }
 }
