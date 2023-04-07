@@ -14,4 +14,14 @@ export default class Controller {
 
     return nextState;
   }
+
+  async handleTagClick(searchTerm) {
+    const nextState = await this.model.search(searchTerm);
+
+    return nextState;
+  }
+
+  handleTagRemove(removeTerm) {
+    return this.model.removeSearchTerm(removeTerm);
+  }
 }

@@ -47,4 +47,10 @@ export default class Model {
       return this.setState({ error });
     }
   }
+
+  removeSearchTerm(removeTerm) {
+    return this.setState({
+      searches: this.state.searches.filter((term) => term !== removeTerm),
+    });
+  }
 }

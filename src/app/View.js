@@ -26,7 +26,7 @@ export default class View {
     const list = document.createDocumentFragment();
 
     searches.forEach((term) => {
-      const tag = document.createElement('button');
+      const tag = document.createElement('div');
 
       tag.classList.add('search__tag');
       tag.textContent = term;
@@ -82,7 +82,6 @@ export default class View {
   onSearchActivation() {
     this.searchForm.classList.add('search_active');
     this.renderHistory(this.controller.getHistory());
-    this.searchForm.removeEventListener('click', this.onSearchActivation);
   }
 
   async onSearchSubmit(event) {
@@ -94,13 +93,30 @@ export default class View {
     this.renderSearch(nextState);
   }
 
+  async onTagClick(event) {
+    event.preventDefault();
+
+    if (event.target.classList.contains('search__tag') && !event.altKey) {
+      this.searchInput.value = event.target.dataset.movie;
+
+      const nextState = await this.controller.handleTagClick(event.target.dataset.movie);
+
+      this.renderSearch(nextState);
+    }
+  }
+
+  onTagRemove(event) {
+    if (event.target.classList.contains('search__tag') && !event.altKey) {
+      this.controller.handleTagRemove(event.target.dataset.movie);
+      this.renderHistory(this.controller.getHistory());
+    }
+  }
+
   // Init
   init() {
-    // this.searchHistory.addEventListener('click', this.onTagClick.bind(this));
-    // this.searchHistory.addEventListener('dblclick', this.onTagRemove.bind(this));
-
-    // this.searchForm.addEventListener('click', this.onSearchActivation.bind(this));
-    this.onSearchActivation(this);
+    this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
     this.searchForm.addEventListener('submit', this.onSearchSubmit.bind(this));
+    this.searchHistory.addEventListener('click', this.onTagClick.bind(this));
+    this.searchHistory.addEventListener('dblclick', this.onTagRemove.bind(this));
   }
 }
