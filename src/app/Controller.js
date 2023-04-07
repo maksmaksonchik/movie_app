@@ -8,4 +8,10 @@ export default class Controller {
   getHistory() {
     return this.model.getState().searches;
   }
+
+  async handleSearchSubmit(searchTerm) {
+    const nextState = await this.model.search(searchTerm);
+
+    return nextState;
+  }
 }

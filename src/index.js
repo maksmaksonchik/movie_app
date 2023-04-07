@@ -7,12 +7,12 @@ import './components/currentYear.js';
 import './components/movieCard.js';
 
 // Nodes
-const searchForm = document.querySelector('.search__form');
-const searchInput = document.querySelector('.search__input');
-const searchHistory = document.querySelector('.search__history');
+// const searchForm = document.querySelector('.search__form');
+// const searchInput = document.querySelector('.search__input');
+// const searchHistory = document.querySelector('.search__history');
 
-const resultsContainer = document.querySelector('.results__grid');
-const resultsMessage = document.querySelector('.results__message');
+// const resultsContainer = document.querySelector('.results__grid');
+// const resultsMessage = document.querySelector('.results__message');
 
 // Склонения
 
@@ -33,12 +33,12 @@ let state = {
   ],
 };
 
-const setState = (update) => {
-  state = { ...state, ...update };
-  return state;
-};
+// const setState = (update) => {
+//   state = { ...state, ...update };
+//   return state;
+// };
 
-const getState = () => state;
+// const getState = () => state;
 
 // Поиск по запросу
 // (обнуляет счетчик резкльтатов, добавляет запрос в searches,
@@ -69,58 +69,58 @@ const search = async (currentState, searchTerm) => {
 
 // Рендер карточки
 
-const renderMovie = (movieData) => {
-  const movie = document.createElement('movie-card');
+// const renderMovie = (movieData) => {
+//   const movie = document.createElement('movie-card');
 
-  movie.poster = movieData.poster;
-  movie.title = movieData.title;
-  movie.year = movieData.year;
-  movie.link = movieData.link;
+//   movie.poster = movieData.poster;
+//   movie.title = movieData.title;
+//   movie.year = movieData.year;
+//   movie.link = movieData.link;
 
-  return movie;
-};
+//   return movie;
+// };
 
 // Рендер истории
 
-const renderHistory = (searches) => {
-  const list = document.createDocumentFragment();
+// const renderHistory = (searches) => {
+//   const list = document.createDocumentFragment();
 
-  searches.forEach((searchTerm) => {
-    const tag = document.createElement('button');
+//   searches.forEach((searchTerm) => {
+//     const tag = document.createElement('button');
 
-    tag.classList.add('search__tag');
-    tag.textContent = searchTerm;
-    tag.dataset.movie = searchTerm;
+//     tag.classList.add('search__tag');
+//     tag.textContent = searchTerm;
+//     tag.dataset.movie = searchTerm;
 
-    list.appendChild(tag);
-  });
+//     list.appendChild(tag);
+//   });
 
-  searchHistory.innerHTML = '';
-  searchHistory.appendChild(list);
-};
+//   searchHistory.innerHTML = '';
+//   searchHistory.appendChild(list);
+// };
 
 // Рендер результатов
 
-const renderList = (results) => {
-  const list = document.createDocumentFragment();
+// const renderList = (results) => {
+//   const list = document.createDocumentFragment();
 
-  results.forEach((movieData) => list.appendChild(renderMovie(movieData)));
+//   results.forEach((movieData) => list.appendChild(renderMovie(movieData)));
 
-  resultsContainer.innerHTML = '';
-  resultsContainer.appendChild(list);
-};
+//   resultsContainer.innerHTML = '';
+//   resultsContainer.appendChild(list);
+// };
 
 // Рендер количества совпадений
 
-const renderCount = (count) => {
-  resultsMessage.textContent = `Нашли ${count} ${declensionedMovies(count)}`;
-};
+// const renderCount = (count) => {
+//   resultsMessage.textContent = `Нашли ${count} ${declensionedMovies(count)}`;
+// };
 
 // Рендер ошибки
 
-const renderError = () => {
-  resultsMessage.textContent = 'Мы не поняли о чем речь ¯\\_(ツ)_/¯';
-};
+// const renderError = () => {
+//   resultsMessage.textContent = 'Мы не поняли о чем речь ¯\\_(ツ)_/¯';
+// };
 
 // Update
 
@@ -165,17 +165,17 @@ const onTagRemove = (event) => {
 
 // Активация строки поиска
 
-const activateSearch = () => {
-  searchForm.classList.add('search_active');
-  renderHistory(state.searches);
-  searchForm.removeEventListener('click', activateSearch);
-};
+// const activateSearch = () => {
+//   searchForm.classList.add('search_active');
+//   renderHistory(state.searches);
+//   searchForm.removeEventListener('click', activateSearch);
+// };
 
 // Подписки на события
 
-const subscribeToSubmit = () => {
-  searchForm.addEventListener('submit', onSearchSubmit);
-};
+// const subscribeToSubmit = () => {
+//   searchForm.addEventListener('submit', onSearchSubmit);
+// };
 
 const subscribeToTagClick = () => {
   searchHistory.addEventListener('click', onTagClick);
@@ -185,11 +185,11 @@ const subscribeToTagRemove = () => {
   searchHistory.addEventListener('dblclick', onTagRemove);
 };
 
-const subscribeToSearchClick = () => {
-  searchForm.addEventListener('click', activateSearch);
-};
+// const subscribeToSearchClick = () => {
+//   searchForm.addEventListener('click', activateSearch);
+// };
 
-subscribeToSubmit();
+// subscribeToSubmit();
 subscribeToTagClick();
 subscribeToTagRemove();
-subscribeToSearchClick();
+// subscribeToSearchClick();

@@ -1,23 +1,26 @@
 import Controller from './Controller.js';
-// import getDeclension from '../helpers/getDeclension';
+import getDeclension from '../helpers/getDeclension.js';
+
+// Helpers
+const declensionedMovies = getDeclension('фильм', 'фильма', 'фильмов');
 
 export default class View {
   constructor() {
     this.controller = new Controller();
 
+    // Form
     this.searchForm = document.querySelector('.search__form');
     this.searchInput = document.querySelector('.search__input');
+
+    // History
     this.searchHistory = document.querySelector('.search__history');
 
+    // Results
     this.resultsContainer = document.querySelector('.results__grid');
     this.resultsMessage = document.querySelector('.results__message');
   }
 
-  onSearchActivation() {
-    this.searchForm.classList.add('search_active');
-    this.renderHistory(this.controller.getHistory());
-    this.searchForm.removeEventListener('click', this.onSearchActivation);
-  }
+  // Renders
 
   renderHistory(searches) {
     const list = document.createDocumentFragment();
@@ -36,10 +39,68 @@ export default class View {
     this.searchHistory.appendChild(list);
   }
 
+  renderCount(count) {
+    this.resultsMessage.textContent = `Нашли ${count} ${declensionedMovies(count)}`;
+  }
+
+  renderError() {
+    this.resultsMessage.textContent = 'Мы не поняли о чем речь ¯\\_(ツ)_/¯';
+  }
+
+  renderList(results) {
+    const renderMovie = (movieData) => {
+      const movie = document.createElement('movie-card');
+
+      movie.poster = movieData.poster;
+      movie.title = movieData.title;
+      movie.year = movieData.year;
+      movie.link = movieData.link;
+
+      return movie;
+    };
+
+    const list = document.createDocumentFragment();
+
+    results.forEach((movieData) => list.appendChild(renderMovie(movieData)));
+
+    this.resultsContainer.innerHTML = '';
+    this.resultsContainer.appendChild(list);
+  }
+
+  renderSearch(state) {
+    if (state.error) {
+      this.renderError();
+    } else {
+      this.renderCount(state.count);
+    }
+    this.renderHistory(state.searches);
+    this.renderList(state.results);
+  }
+
+  // Listeners
+
+  onSearchActivation() {
+    this.searchForm.classList.add('search_active');
+    this.renderHistory(this.controller.getHistory());
+    this.searchForm.removeEventListener('click', this.onSearchActivation);
+  }
+
+  async onSearchSubmit(event) {
+    event.preventDefault();
+    this.searchInput.blur();
+
+    const nextState = await this.controller.handleSearchSubmit(this.searchInput.value);
+
+    this.renderSearch(nextState);
+  }
+
+  // Init
   init() {
-    // this.searchForm.addEventListener('submit', this.onSearchSubmit.bind(this));
     // this.searchHistory.addEventListener('click', this.onTagClick.bind(this));
     // this.searchHistory.addEventListener('dblclick', this.onTagRemove.bind(this));
-    this.searchForm.addEventListener('click', this.onSearchActivation.bind(this));
+
+    // this.searchForm.addEventListener('click', this.onSearchActivation.bind(this));
+    this.onSearchActivation(this);
+    this.searchForm.addEventListener('submit', this.onSearchSubmit.bind(this));
   }
 }
