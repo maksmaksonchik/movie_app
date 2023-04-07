@@ -2,7 +2,7 @@
   "name": "tinkoff-prokat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "author": "Maksim Efremov <efremovmax2002@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
