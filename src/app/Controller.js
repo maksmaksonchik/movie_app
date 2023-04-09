@@ -5,6 +5,14 @@ export default class Controller {
     this.model = new Model();
   }
 
+  isDefaultState() {
+    return this.model.isDefaultState;
+  }
+
+  getState() {
+    return this.model.getState();
+  }
+
   getHistory() {
     return this.model.getState().searches;
   }

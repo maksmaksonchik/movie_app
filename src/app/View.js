@@ -136,7 +136,14 @@ export default class View {
 
   // Init
   init() {
-    this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
+    if (this.controller.isDefaultState()) {
+      this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
+    } else {
+      this.onSearchActivation();
+      [this.searchInput.value] = this.controller.getHistory();
+      this.renderSearch(this.controller.getState());
+    }
+
     this.searchForm.addEventListener('submit', this.onSearchSubmit.bind(this));
     this.subscribeToTagClickAndRemove();
   }

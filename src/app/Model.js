@@ -2,24 +2,27 @@ import mapMovie from '../helpers/mapMovie.js';
 
 export default class Model {
   constructor() {
-    this.state = {
-      count: 0,
-      results: [],
-      error: false,
-      searches: [
-        'dreamers',
-        'europa',
-        'before sunrise',
-        'dogma',
-        'stealing beauty',
-      ],
-    };
+    const restoredState = JSON.parse(localStorage.getItem('state'));
+
+    if (restoredState) {
+      this.state = restoredState;
+      this.isDefaultState = false;
+    } else {
+      this.state = {
+        count: 0,
+        results: [],
+        error: false,
+        searches: [],
+      };
+      this.isDefaultState = true;
+    }
 
     this.cache = {};
   }
 
   setState(update) {
     this.state = { ...this.state, ...update };
+    localStorage.setItem('state', JSON.stringify(this.state));
     return this.state;
   }
 
