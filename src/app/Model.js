@@ -14,6 +14,8 @@ export default class Model {
         'stealing beauty',
       ],
     };
+
+    this.cache = {};
   }
 
   setState(update) {
@@ -25,7 +27,9 @@ export default class Model {
     return this.state;
   }
 
-  async search(searchTerm) {
+  async search(searchString) {
+    const searchTerm = searchString.toLowerCase();
+
     this.setState({
       count: 0,
       results: [],
@@ -33,19 +37,25 @@ export default class Model {
       searches: [searchTerm].concat(this.state.searches.filter((term) => term !== searchTerm)),
     });
 
+    if (this.cache[searchTerm] !== undefined) {
+      return this.setState(this.cache[searchTerm]);
+    }
+
     try {
       const response = await fetch(`http://www.omdbapi.com/?apikey=dfc2dae4&type=movie&s=${searchTerm}`);
       const results = await response.json();
 
-      return results.Response === 'True'
-        ? this.setState({
+      this.cache[searchTerm] = results.Response === 'True'
+        ? {
           count: results.totalResults,
           results: results.Search.map(mapMovie),
-        })
-        : this.setState({ error: results.Error });
+        }
+        : { error: results.Error };
     } catch (error) {
-      return this.setState({ error });
+      this.cache[searchTerm] = { error };
     }
+
+    return this.setState(this.cache[searchTerm]);
   }
 
   removeSearchTerm(removeTerm) {
