@@ -8,8 +8,16 @@ export default class View {
   constructor() {
     this.controller = new Controller();
 
-    // Preloader
-    this.preloader = document.querySelector('.preloader');
+    // Loaders
+    this.preloader = document.querySelector('.loader');
+    this.loader = document.createElement('div');
+    this.loader.classList.add('loader');
+    this.loader.innerHTML = `
+    <div class="loader">
+        <div class="loader__animation">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>`;
 
     // Form
     this.searchForm = document.querySelector('.search__form');
@@ -89,22 +97,26 @@ export default class View {
 
   async onSearchSubmit(event) {
     event.preventDefault();
+    this.showLoader();
     this.searchInput.blur();
 
     const nextState = await this.controller.handleSearchSubmit(this.searchInput.value);
 
     this.renderSearch(nextState);
+    this.hideLoader();
   }
 
   subscribeToTagClickAndRemove() {
     const isTargetTag = (event) => event.target.classList.contains('search__tag') && !event.altKey;
 
     const onTagClick = async (event) => {
+      this.showLoader();
       this.searchInput.value = event.target.dataset.movie;
 
       const nextState = await this.controller.handleTagClick(event.target.dataset.movie);
 
       this.renderSearch(nextState);
+      this.hideLoader();
     };
 
     const onTagRemove = (event) => {
@@ -137,10 +149,18 @@ export default class View {
     });
   }
 
+  showLoader() {
+    document.body.appendChild(this.loader);
+  }
+
+  hideLoader() {
+    document.body.removeChild(this.loader);
+  }
+
   // Init
   init() {
     window.addEventListener('load', () => {
-      this.preloader.classList.add('preloader_hidden');
+      this.preloader.classList.add('loader_hidden');
       setTimeout(() => {
         this.preloader.remove();
       }, 500);
