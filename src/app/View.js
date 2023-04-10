@@ -9,15 +9,10 @@ export default class View {
     this.controller = new Controller();
 
     // Loaders
-    this.preloader = document.querySelector('.loader');
+    this.preloader = document.querySelector('.loader_preloader');
     this.loader = document.createElement('div');
     this.loader.classList.add('loader');
-    this.loader.innerHTML = `
-    <div class="loader">
-        <div class="loader__animation">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-        </div>
-    </div>`;
+    this.loader.innerHTML = this.preloader.innerHTML;
 
     // Form
     this.searchForm = document.querySelector('.search__form');
@@ -88,7 +83,24 @@ export default class View {
     this.renderList(state.results);
   }
 
+  // Loaders
+
+  showLoader() {
+    document.body.appendChild(this.loader);
+  }
+
+  hideLoader() {
+    document.body.removeChild(this.loader);
+  }
+
   // Listeners
+
+  hidePreloader() {
+    this.preloader.classList.add('loader_hidden');
+    setTimeout(() => {
+      this.preloader.remove();
+    }, 500);
+  }
 
   onSearchActivation() {
     this.searchForm.classList.add('search_active');
@@ -149,22 +161,9 @@ export default class View {
     });
   }
 
-  showLoader() {
-    document.body.appendChild(this.loader);
-  }
-
-  hideLoader() {
-    document.body.removeChild(this.loader);
-  }
-
   // Init
   init() {
-    window.addEventListener('load', () => {
-      this.preloader.classList.add('loader_hidden');
-      setTimeout(() => {
-        this.preloader.remove();
-      }, 500);
-    });
+    window.addEventListener('load', this.hidePreloader.bind(this));
 
     if (this.controller.isDefaultState()) {
       this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
