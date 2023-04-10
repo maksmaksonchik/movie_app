@@ -8,6 +8,9 @@ export default class View {
   constructor() {
     this.controller = new Controller();
 
+    // Preloader
+    this.preloader = document.querySelector('.preloader');
+
     // Form
     this.searchForm = document.querySelector('.search__form');
     this.searchInput = document.querySelector('.search__input');
@@ -136,6 +139,13 @@ export default class View {
 
   // Init
   init() {
+    window.addEventListener('load', () => {
+      this.preloader.classList.add('preloader_hidden');
+      setTimeout(() => {
+        this.preloader.remove();
+      }, 500);
+    });
+
     if (this.controller.isDefaultState()) {
       this.searchForm.addEventListener('click', this.onSearchActivation.bind(this), { once: true });
     } else {
