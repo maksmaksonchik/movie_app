@@ -45,7 +45,7 @@ export default class Model {
     }
 
     try {
-      const response = await fetch(`http://www.omdbapi.com/?apikey=dfc2dae4&type=movie&s=${searchTerm}`);
+      const response = await fetch(`https://www.omdbapi.com/?apikey=dfc2dae4&type=movie&s=${searchTerm}`);
       const results = await response.json();
 
       this.cache[searchTerm] = results.Response === 'True'
